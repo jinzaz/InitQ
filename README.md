@@ -31,6 +31,7 @@ Redis消息队列中间件
         m.ConnectionString = "47.104.247.70,password=admin";
         m.ListSubscribe = new List<Type>() { typeof(RedisSubscribeA), typeof(RedisSubscribeB) };
         m.ShowLog = false;
+        m.DbIndex = 0; // 默认 0
     });
     ```
 ### 消息发布/订阅

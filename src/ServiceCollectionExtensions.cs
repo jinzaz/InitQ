@@ -35,11 +35,11 @@ namespace InitQ
 
             if (redisConn != null)
             {
-                services.AddSingleton(typeof(ICacheService), new RedisCacheService(redisConn));
+                services.AddSingleton(typeof(ICacheService), new RedisCacheService(redisConn, options.DbIndex));
             }
             else
             {
-                services.AddSingleton(typeof(ICacheService), new RedisCacheService(options.ConnectionString));
+                services.AddSingleton(typeof(ICacheService), new RedisCacheService(options.ConnectionString, options.DbIndex));
             }
 
 

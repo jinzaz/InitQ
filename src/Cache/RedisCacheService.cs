@@ -43,24 +43,26 @@ namespace InitQ.Cache
         /// 
         /// </summary>
         /// <param name="connection"></param>
-        public RedisCacheService(ConnectionMultiplexer connection)
+        public RedisCacheService(ConnectionMultiplexer connection, int dbIndex)
         {
             //设置线程池最小连接数
             ThreadPool.SetMinThreads(200, 200);
 
             connectionMultiplexer = connection;// ConnectionMultiplexer.Connect(options);
-            database = connectionMultiplexer.GetDatabase();
+
+            database = connectionMultiplexer.GetDatabase(dbIndex);
             //通道广播
             sub = connectionMultiplexer.GetSubscriber();
         }
 
-        public RedisCacheService(string configuration)
+        public RedisCacheService(string configuration, int dbIndex)
         {
             //设置线程池最小连接数
             ThreadPool.SetMinThreads(200, 200);
 
             connectionMultiplexer = ConnectionMultiplexer.Connect(configuration);
-            database = connectionMultiplexer.GetDatabase();
+
+            database = connectionMultiplexer.GetDatabase(dbIndex);
             //通道广播
             sub = connectionMultiplexer.GetSubscriber();
         }

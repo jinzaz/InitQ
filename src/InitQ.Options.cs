@@ -13,6 +13,11 @@ namespace InitQ
         public string ConnectionString { get; set; }
 
         /// <summary>
+        /// 数据库索引
+        /// </summary>
+        public int DbIndex { get; set; }
+
+        /// <summary>
         /// 没消息时挂起时长(毫秒)
         /// </summary>
         public int SuspendTime { get; set; }
@@ -38,6 +43,7 @@ namespace InitQ
             IntervalTime = 0;
             SuspendTime = 1000;
             ShowLog = false;
+            DbIndex = 0;
         }
     }
 }
